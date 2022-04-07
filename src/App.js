@@ -2,8 +2,11 @@ import React, { useRef } from 'react'
 import logo from './logo.svg';
 import './App.css';
 
+import * as faceapi from 'face-api.js'
+
 function App() {
   const inputRef = useRef()
+  console.log(faceapi.nets)
 
   const handleChange = e => {
     console.log(e.target.files)

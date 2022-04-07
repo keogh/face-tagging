@@ -5,6 +5,8 @@ import './App.css';
 import useFaceapi from './hooks/useFaceapi';
 import { detectAllFaces } from './faceApi/index.js'
 
+import ImageNavigator from './Components/ImageNavigator/ImageNavigator';
+
 function App() {
   const inputRef = useRef()
   // console.log(faceapi.nets)
@@ -35,7 +37,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="container px-4">
       {isLoadingModels && (
         <div>
           <strong>Loading models....</strong>
@@ -44,7 +46,8 @@ function App() {
       <div>
         <input ref={inputRef} type="file" multiple onChange={handleChange}/>
       </div>
-      <div>Panel</div>
+      
+      <ImageNavigator />
     </div>
   );
 }

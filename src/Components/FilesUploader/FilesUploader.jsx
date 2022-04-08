@@ -1,10 +1,13 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useContext } from 'react'
 import { connect } from 'react-redux'
 
 import { setItems as setItemsAction } from '../../slices/imagesSlice'
 import { processImages } from './processImages'
+import { ImagesDataContext } from '../ImagesDataContext';
 
-const FilesUploader = ({ setItems }) => {
+const FilesUploader = ({}) => {
+  const { setItems } = useContext(ImagesDataContext)
+
   const handleChange = useCallback(
     async (ev) => {
       const files = ev.target.files
@@ -31,5 +34,6 @@ const FilesUploader = ({ setItems }) => {
 
 export default connect(
   state => ({}),
-  { setItems: setItemsAction }
+  // { setItems: setItemsAction }
+  {}
 )(FilesUploader)

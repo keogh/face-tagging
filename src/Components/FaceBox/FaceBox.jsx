@@ -1,6 +1,11 @@
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
+import { Popover } from 'react-tiny-popover'
+
+import FaceLabel from './FaceLabel'
 
 const FaceBox = ({ top, left, width, height, className = '' }) => {
+  const [isHover, setIsHover] = useState(false)
+
   const styleValues = useMemo(
     () => ({
       top,
@@ -11,20 +16,48 @@ const FaceBox = ({ top, left, width, height, className = '' }) => {
     [top, left, width, height]
   )
 
-  return <div
-    className={`
-      absolute
-      border
-      border-2
-      border-primary
-      hover:border-secondary
-      rounded-md
-      hover:cursor-pointer
-      hover:scale-105
-      ${className}
-    `}
-    style={styleValues}
-  />
+  const handleMouseEnter = useCallback(() => setIsHover(true), [])
+  const handleMouseLeave = useCallback(() => setIsHover(false), [])
+  console.log(isHover)
+
+  return (
+    <div
+      className={`
+        absolute
+        hover:cursor-pointer
+        hover:scale-105
+      `}
+      style={styleValues}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <Popover
+        isOpen
+        positions={['top']}
+        padding={-1}
+        align="start"
+        content={(
+          <FaceLabel
+            text="test"
+            className={`${isHover ? 'bg-secondary' : 'bg-primary'}`}
+          />
+        )}
+      >
+        <div
+          className={`
+            border
+            border-2
+            border-primary
+            hover:border-secondary
+            rounded-md
+            w-full
+            h-full
+            ${className}
+          `}
+        />
+      </Popover>
+    </div>
+  )
 }
 
 export default FaceBox

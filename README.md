@@ -1,7 +1,9 @@
 ## TODO
+* Loading/Processing state when loading models and recognizing faces
 * ~~Make the face-box a component~~
-* Show label in the face-box
+* ~~Show test label in the face-box~~
 * ~~Hover over the face-box styling~~
+* Label faces
 * Click face-box displays a popmenu to tag
 * Show/Hide face-boxes toggle
 * Deploy to netlify

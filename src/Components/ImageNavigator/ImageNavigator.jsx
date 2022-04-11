@@ -30,7 +30,16 @@ const ImageNavigator = () => {
       <div className="basis-1/4">
         <ImagesList images={items} />
       </div>
-      <div className="relative basis-3/4 border rounded border-gray-500 h-[860px] max-h-[860px]">
+      <div className={`
+        relative
+        basis-3/4
+        border
+        rounded
+        border-gray-500
+        h-[860px]
+        max-h-[860px]
+        overflow-hidden
+      `}>
         {!!selectedItem && (
           <img
             src={selectedItem.src}

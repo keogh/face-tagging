@@ -7,9 +7,10 @@
 * Deploy to netlify
 * Hover over image item styling
 * Set color to selected image item
-* Integrate eslint
+* Integrate eslint with VSCode
+* Install prettierjs
 
-## To Run
+## Run it
 
 ```bash
 $ yarn install

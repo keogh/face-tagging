@@ -1,4 +1,7 @@
 import { getFaceapi } from "../../faceApi"
+import { FaceMatcher } from "../../faceApi/FaceMatcher"
+
+const UNKNOWN = 'unknown'
 
 export const processImages = files => {
   const processPromises = []
@@ -33,6 +36,8 @@ async function detectFaces(items, resolve, reject) {
   try {
     console.log('Getting faceapi')
     const faceapi = await getFaceapi()
+    let faceMatcher = await FaceMatcher()
+
     for (let i = 0; i < items.length; i++) {
       const item = items[i]
       const { name, src } = item
@@ -40,16 +45,33 @@ async function detectFaces(items, resolve, reject) {
       image.src = src
   
       console.log('detecting faces for image ', i)
-      const result = await faceapi
+      const results = await faceapi
         .detectAllFaces(image)
         .withFaceLandmarks()
         .withFaceDescriptors()
       console.log('already detected faces')
+      console.log('Result: ', results)
+
+      const faces = results.map(r => {
+        const { detection, descriptor } = r
+        let face = {
+          detection,
+          label: null,
+          distance: null,
+          descriptor,
+        }
+
+        const { label, distance } = faceMatcher.add(face)
+        face = {...face, label, distance }
+
+        return face
+      })
       
       processedImages.push({
         name,
         src,
-        faceapi: result,
+        faceapi: results,
+        faces,
       })
     }
 

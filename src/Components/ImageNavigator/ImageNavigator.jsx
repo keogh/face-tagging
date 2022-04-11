@@ -16,11 +16,10 @@ const ImageNavigator = () => {
   const handleLoadImage = useCallback(
     async (ev) => {
       const { width, height } = ev.target
-      console.log(ev.target.width, ev.target.height)
       const faceapi = await getFaceapi()
-      const resizedResults = faceapi.resizeResults(selectedItem.faceapi, { width, height })
-      console.log('resizedResults', resizedResults)
-      setBoxesResized(resizedResults)
+
+      const resizedFaceBoxes = faceapi.resizeResults(selectedItem.faces, { width, height })
+      setBoxesResized(resizedFaceBoxes)
     },
     [selectedItem]
   )
@@ -50,6 +49,7 @@ const ImageNavigator = () => {
 
         {!!boxesResized && boxesResized.map((face, i) => {
           const { top, left, width, height } = face.detection.box
+          const { label, distance } = face
           return (
             <FaceBox
               key={`face-box-${i}`}
@@ -57,6 +57,8 @@ const ImageNavigator = () => {
               left={left}
               width={width}
               height={height}
+              label={label}
+              distance={distance}
             />
           )
         })}

@@ -3,7 +3,8 @@
 * ~~Make the face-box a component~~
 * ~~Show test label in the face-box~~
 * ~~Hover over the face-box styling~~
-* Label faces
+* ~~Label faces~~
+* View all detected faces in the top
 * Click face-box displays a popmenu to tag
 * Show/Hide face-boxes toggle
 * Deploy to netlify

@@ -3,7 +3,15 @@ import { Popover } from 'react-tiny-popover'
 
 import FaceLabel from './FaceLabel'
 
-const FaceBox = ({ top, left, width, height, className = '' }) => {
+const FaceBox = ({
+  top,
+  left,
+  width,
+  height,
+  className = '',
+  label,
+  distance,
+}) => {
   const [isHover, setIsHover] = useState(false)
 
   const styleValues = useMemo(
@@ -38,7 +46,7 @@ const FaceBox = ({ top, left, width, height, className = '' }) => {
         align="start"
         content={(
           <FaceLabel
-            text="test"
+            text={label}
             className={`${isHover ? 'bg-secondary' : 'bg-primary'}`}
           />
         )}

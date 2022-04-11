@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useContext } from 'react'
 import { ImagesDataContext } from '../ImagesDataContext'
 import { getFaceapi } from '../../faceApi'
 import ImagesList from './ImagesList'
+import FaceBox from '../FaceBox'
 
 const ImageNavigator = () => {
   const {
@@ -41,15 +42,12 @@ const ImageNavigator = () => {
         {!!boxesResized && boxesResized.map((face, i) => {
           const { top, left, width, height } = face.detection.box
           return (
-            <div
+            <FaceBox
               key={`face-box-${i}`}
-              className="absolute border border-orange-700"
-              style={{
-                top,
-                left,
-                width,
-                height,
-              }}
+              top={top}
+              left={left}
+              width={width}
+              height={height}
             />
           )
         })}

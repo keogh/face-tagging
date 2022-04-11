@@ -1,9 +1,9 @@
 ## TODO
-* Make the face box a component
-* Show label in the box
-* Hover over the box styling
-* Click Box displays a popmenu to tag
-* Show/Hide Boxes toggle
+* ~~Make the face-box a component~~
+* Show label in the face-box
+* ~~Hover over the face-box styling~~
+* Click face-box displays a popmenu to tag
+* Show/Hide face-boxes toggle
 * Deploy to netlify
 * Hover over image item styling
 * ~~Set color to selected image item~~

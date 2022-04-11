@@ -34,7 +34,7 @@ async function detectFaces(items, resolve, reject) {
     console.log('Getting faceapi')
     const faceapi = await getFaceapi()
     for (let i = 0; i < items.length; i++) {
-      const item = items[0]
+      const item = items[i]
       const { name, src } = item
       const image = new Image()
       image.src = src

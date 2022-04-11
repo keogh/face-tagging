@@ -7,12 +7,19 @@ import { ImagesDataContext } from './Components/ImagesDataContext';
 
 function App() {
   const [items, setItems] = useState([])
+  const [selectedItem, setSelectedItem] = useState(null)
+  const [boxesResized, setBoxesResized] = useState([])
+
   const contextValue = useMemo(
     () => ({
       items,
       setItems,
+      selectedItem,
+      setSelectedItem,
+      boxesResized,
+      setBoxesResized,
     }),
-    [items]
+    [items, selectedItem, boxesResized]
   )
 
   return (

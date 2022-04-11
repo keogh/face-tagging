@@ -6,7 +6,7 @@
 * Show/Hide Boxes toggle
 * Deploy to netlify
 * Hover over image item styling
-* Set color to selected image item
+* ~~Set color to selected image item~~
 * Integrate eslint with VSCode
 * Install prettierjs
 

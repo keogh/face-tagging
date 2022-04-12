@@ -4,14 +4,16 @@ import './App.css';
 import ImageNavigator from './Components/ImageNavigator/ImageNavigator';
 import FaceThubmnails from './Components/FaceThumbnails';
 import FilesUploader from './Components/FilesUploader';
-import Loading from './Components/Loading/Loading';
 import { ImagesDataContext } from './Components/ImagesDataContext';
+import Loading from './Components/Loading/Loading';
+import TagModal from './Components/TagModal/TagModal';
 
 function App() {
   const [items, setItems] = useState([])
   const [selectedItem, setSelectedItem] = useState(null)
   const [boxesResized, setBoxesResized] = useState([])
   const [isProcessing, setIsProcessing] = useState(false)
+  const [isOpenTagModal, setIsOpenTagModal] = useState(true)
 
   const appendItems = useCallback(
     values => setItems([ ...items, ...values ]),
@@ -29,12 +31,15 @@ function App() {
       setBoxesResized,
       isProcessing,
       setIsProcessing,
+      isOpenTagModal,
+      setIsOpenTagModal,
     }),
-    [items, selectedItem, boxesResized, appendItems]
+    [items, selectedItem, boxesResized, appendItems, isOpenTagModal]
   )
 
   return (
     <ImagesDataContext.Provider value={contextValue}>
+      <TagModal />
       <Loading isOpen={isProcessing} />
       <div className="container px-4">
         <div className="p-4">

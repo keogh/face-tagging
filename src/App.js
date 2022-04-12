@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 import './App.css';
 
 import ImageNavigator from './Components/ImageNavigator/ImageNavigator';
-import FaceThubmnails from './Components/FaceThumbnails/FaceThumbnails';
+import FaceThubmnails from './Components/FaceThumbnails';
 import FilesUploader from './Components/FilesUploader';
 import { ImagesDataContext } from './Components/ImagesDataContext';
 

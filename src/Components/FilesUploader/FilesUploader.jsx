@@ -6,7 +6,7 @@ import { processImages } from './processImages'
 import { ImagesDataContext } from '../ImagesDataContext';
 
 const FilesUploader = ({}) => {
-  const { setItems } = useContext(ImagesDataContext)
+  const { setItems, setIsProcessing } = useContext(ImagesDataContext)
 
   const handleChange = useCallback(
     async (ev) => {
@@ -15,9 +15,11 @@ const FilesUploader = ({}) => {
         return;
       }
       
+      setIsProcessing(true)
       const images = await processImages(files)
       console.log('images', images)
       setItems(images)
+      setIsProcessing(false)
     },
     [ setItems ]
   )
@@ -32,8 +34,4 @@ const FilesUploader = ({}) => {
   )
 }
 
-export default connect(
-  state => ({}),
-  // { setItems: setItemsAction }
-  {}
-)(FilesUploader)
+export default FilesUploader

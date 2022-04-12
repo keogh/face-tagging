@@ -10,7 +10,7 @@ module.exports = {
         secondary: '#F56D91',
         neutral: '#DFDFDE',
         white: '#F7F5F2',
-      }
+      },
     },
   },
   plugins: [],

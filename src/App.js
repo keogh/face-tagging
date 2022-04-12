@@ -4,12 +4,14 @@ import './App.css';
 import ImageNavigator from './Components/ImageNavigator/ImageNavigator';
 import FaceThubmnails from './Components/FaceThumbnails';
 import FilesUploader from './Components/FilesUploader';
+import Loading from './Components/Loading/Loading';
 import { ImagesDataContext } from './Components/ImagesDataContext';
 
 function App() {
   const [items, setItems] = useState([])
   const [selectedItem, setSelectedItem] = useState(null)
   const [boxesResized, setBoxesResized] = useState([])
+  const [isProcessing, setIsProcessing] = useState(false)
 
   const contextValue = useMemo(
     () => ({
@@ -19,12 +21,15 @@ function App() {
       setSelectedItem,
       boxesResized,
       setBoxesResized,
+      isProcessing,
+      setIsProcessing,
     }),
     [items, selectedItem, boxesResized]
   )
 
   return (
     <ImagesDataContext.Provider value={contextValue}>
+      <Loading isOpen={isProcessing} />
       <div className="container px-4">
         <div className="p-4">
           <FilesUploader />

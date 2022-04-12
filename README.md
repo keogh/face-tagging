@@ -6,7 +6,7 @@
 * ~~Hover over the face-box styling~~
 * ~~Label faces~~
 * ~~View all detected faces in the top/bottom~~
-* Allow keep adding faces
+* ~~Allow keep adding faces~~
 * Improve File Uploader styling
 * Filter by Face?
 * Click face-box displays a popmenu to tag

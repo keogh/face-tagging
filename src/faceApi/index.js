@@ -24,7 +24,7 @@ export const getFaceapi = async () => {
 
   if (!faceapi.nets.faceExpressionNet.isLoaded) {
     console.log('loading faceExpressionNet')
-    // await faceapi.nets.faceExpressionNet.loadFromUri('/models')
+    await faceapi.nets.faceExpressionNet.loadFromUri('/models')
   }
 
   if (!faceapi.nets.faceLandmark68Net.isLoaded) {

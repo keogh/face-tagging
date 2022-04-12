@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import './App.css';
 
 import ImageNavigator from './Components/ImageNavigator/ImageNavigator';
@@ -13,10 +13,16 @@ function App() {
   const [boxesResized, setBoxesResized] = useState([])
   const [isProcessing, setIsProcessing] = useState(false)
 
+  const appendItems = useCallback(
+    values => setItems([ ...items, ...values ]),
+    [items]
+  )
+
   const contextValue = useMemo(
     () => ({
       items,
       setItems,
+      appendItems,
       selectedItem,
       setSelectedItem,
       boxesResized,
@@ -24,7 +30,7 @@ function App() {
       isProcessing,
       setIsProcessing,
     }),
-    [items, selectedItem, boxesResized]
+    [items, selectedItem, boxesResized, appendItems]
   )
 
   return (

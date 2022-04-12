@@ -1,5 +1,6 @@
 ## TODO
 * ~~Loading/Processing state when loading models and recognizing faces~~
+* Add Processing log information to the loading state
 * ~~Make the face-box a component~~
 * ~~Show test label in the face-box~~
 * ~~Hover over the face-box styling~~

@@ -1,12 +1,15 @@
 import React, { useCallback, useContext } from 'react'
-import { connect } from 'react-redux'
 
-import { setItems as setItemsAction } from '../../slices/imagesSlice'
 import { processImages } from './processImages'
 import { ImagesDataContext } from '../ImagesDataContext';
 
 const FilesUploader = ({}) => {
-  const { setItems, setIsProcessing } = useContext(ImagesDataContext)
+  const {
+    appendItems,
+    selectedItem,
+    setSelectedItem,
+    setIsProcessing,
+  } = useContext(ImagesDataContext)
 
   const handleChange = useCallback(
     async (ev) => {
@@ -17,11 +20,13 @@ const FilesUploader = ({}) => {
       
       setIsProcessing(true)
       const images = await processImages(files)
-      console.log('images', images)
-      setItems(images)
+      appendItems(images)
       setIsProcessing(false)
+      if (!selectedItem) {
+        setSelectedItem(images[0])
+      }
     },
-    [ setItems ]
+    [appendItems]
   )
 
   return (

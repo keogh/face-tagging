@@ -6,7 +6,7 @@ const ImageItem = ({ image, active = false }) => {
 
   const handleClick = useCallback(
     () => setSelectedItem(image),
-    [setSelectedItem]
+    [setSelectedItem, image]
   )
 
   return (

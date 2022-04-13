@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useContext } from 'react'
+import React, { useCallback, useContext } from 'react'
 
 import { ImagesDataContext } from '../ImagesDataContext'
 import { getFaceapi } from '../../faceApi'
@@ -11,6 +11,7 @@ const ImageNavigator = () => {
     selectedItem,
     boxesResized,
     setBoxesResized,
+    openTagModal,
   } = useContext(ImagesDataContext)
 
   const handleLoadImage = useCallback(
@@ -20,8 +21,19 @@ const ImageNavigator = () => {
 
       const resizedFaceBoxes = faceapi.resizeResults(selectedItem.faces, { width, height })
       setBoxesResized(resizedFaceBoxes)
+      console.log('face boxes: ', resizedFaceBoxes)
     },
-    [selectedItem]
+    [
+      selectedItem,
+      setBoxesResized,
+    ]
+  )
+
+  const handleClickFaceBox = useCallback(
+    faceLabel => {
+      openTagModal({ faceLabel })
+    },
+    [openTagModal]
   )
 
   return (
@@ -44,6 +56,7 @@ const ImageNavigator = () => {
             src={selectedItem.src}
             className="h-[860px]"
             onLoad={handleLoadImage}
+            alt="Selected Item"
           />
         )}
 
@@ -59,6 +72,7 @@ const ImageNavigator = () => {
               height={height}
               label={label}
               distance={distance}
+              onClick={handleClickFaceBox}
             />
           )
         })}

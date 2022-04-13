@@ -13,11 +13,31 @@ function App() {
   const [selectedItem, setSelectedItem] = useState(null)
   const [boxesResized, setBoxesResized] = useState([])
   const [isProcessing, setIsProcessing] = useState(false)
-  const [isOpenTagModal, setIsOpenTagModal] = useState(true)
+  const [isOpenTagModal, setIsOpenTagModal] = useState(false)
+  const [tagModalProps, setTagModalProps] = useState({})
+  const [labeledDescriptors, setLabeledDescriptors] = useState([])
 
   const appendItems = useCallback(
-    values => setItems([ ...items, ...values ]),
+    values => {
+      setItems([ ...items, ...values ])
+    },
     [items]
+  )
+
+  const openTagModal = useCallback(
+    (props = {}) => {
+      setTagModalProps(props)
+      setIsOpenTagModal(true)
+    },
+    []
+  )
+
+  const closeTagModal = useCallback(
+    (props = {}) => {
+      setTagModalProps({})
+      setIsOpenTagModal(false)
+    },
+    []
   )
 
   const contextValue = useMemo(
@@ -32,14 +52,27 @@ function App() {
       isProcessing,
       setIsProcessing,
       isOpenTagModal,
-      setIsOpenTagModal,
+      openTagModal,
+      closeTagModal,
+      labeledDescriptors,
+      setLabeledDescriptors
     }),
-    [items, selectedItem, boxesResized, appendItems, isOpenTagModal]
+    [
+      items,
+      appendItems,
+      selectedItem,
+      boxesResized,
+      isProcessing,
+      isOpenTagModal,
+      openTagModal,
+      closeTagModal,
+      labeledDescriptors,
+    ]
   )
 
   return (
     <ImagesDataContext.Provider value={contextValue}>
-      <TagModal />
+      <TagModal {...tagModalProps} />
       <Loading isOpen={isProcessing} />
       <div className="container px-4">
         <div className="p-4">

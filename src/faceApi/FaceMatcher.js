@@ -2,9 +2,8 @@ import { getFaceapi } from ".";
 
 const UNKNOWN = 'unknown'
 
-export async function FaceMatcher() {
+export async function FaceMatcher({ labeledDescriptors = [] }) {
   const faceapi = await getFaceapi()
-  const labeledDescriptors = []
   
   let fm = null
   let number = 0
@@ -37,5 +36,6 @@ export async function FaceMatcher() {
 
   return {
     add,
+    labeledDescriptors,
   }
 }

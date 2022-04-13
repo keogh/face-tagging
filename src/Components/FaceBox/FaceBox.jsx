@@ -11,6 +11,7 @@ const FaceBox = ({
   className = '',
   label,
   distance,
+  onClick = null,
 }) => {
   const [isHover, setIsHover] = useState(false)
 
@@ -26,7 +27,14 @@ const FaceBox = ({
 
   const handleMouseEnter = useCallback(() => setIsHover(true), [])
   const handleMouseLeave = useCallback(() => setIsHover(false), [])
-  console.log(isHover)
+  const handleClick = useCallback(
+    () => {
+      if (onClick) {
+        onClick(label)
+      }
+    },
+    [onClick, label]
+  )
 
   return (
     <div
@@ -38,6 +46,7 @@ const FaceBox = ({
       style={styleValues}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       <Popover
         isOpen

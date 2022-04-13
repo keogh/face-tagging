@@ -51,10 +51,10 @@ const FaceImage = ({ src, box }) => {
   return (
     <div className="w-[64px] h-[64px]">
       <div className="w-0 h-0 overflow-hidden">
-        <img ref={imgRef} />
+        <img ref={imgRef} alt="hidden tool for cropping the content" />
       </div>
       <div className="w-[64px] h-[64px] rounded-full overflow-hidden">
-        <img src={thumbImage} />
+        <img src={thumbImage} alt="Face thubnail" />
       </div>
     </div>
   )

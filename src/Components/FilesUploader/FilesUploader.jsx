@@ -3,12 +3,14 @@ import React, { useCallback, useContext } from 'react'
 import { processImages } from './processImages'
 import { ImagesDataContext } from '../ImagesDataContext';
 
-const FilesUploader = ({}) => {
+const FilesUploader = () => {
   const {
     appendItems,
     selectedItem,
     setSelectedItem,
     setIsProcessing,
+    labeledDescriptors,
+    setLabeledDescriptors,
   } = useContext(ImagesDataContext)
 
   const handleChange = useCallback(
@@ -18,15 +20,27 @@ const FilesUploader = ({}) => {
         return;
       }
       
+      console.log('labeledDescriptors', labeledDescriptors)
       setIsProcessing(true)
-      const images = await processImages(files)
+      const {
+        images,
+        labeledDescriptors: newLabeledDescriptors
+      } = await processImages(files, { labeledDescriptors })
       appendItems(images)
+      setLabeledDescriptors(newLabeledDescriptors)
       setIsProcessing(false)
       if (!selectedItem) {
         setSelectedItem(images[0])
       }
     },
-    [appendItems]
+    [
+      appendItems,
+      labeledDescriptors,
+      setLabeledDescriptors,
+      selectedItem,
+      setSelectedItem,
+      setIsProcessing,
+    ]
   )
 
   return (

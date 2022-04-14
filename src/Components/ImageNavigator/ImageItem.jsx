@@ -13,13 +13,15 @@ const ImageItem = ({ image, active = false }) => {
     <div
       onClick={handleClick}
       className={`
-        p-4
+        p-3
         my-1
         border
         border-gray-600
         rounded
         cursor-pointer
         bg-${active ? 'primary' : 'white'}
+        text-${active ? 'white' : 'black'}
+        text-sm
       `}
     >
       {image.name}

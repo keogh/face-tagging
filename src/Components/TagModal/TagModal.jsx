@@ -15,6 +15,7 @@ const customStyles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 12,
   }
 }
 

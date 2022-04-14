@@ -33,6 +33,9 @@ const Loading = ({ isOpen = false }) => {
           <div className="mt-7 text-secondary text-2xl animate-bounce">
             Processing
           </div>
+          <div className="mt-7 text-secondary text-base animate-pulse">
+            (Sorry, it takes a while)
+          </div>
         </div>
       </div>
     </div>

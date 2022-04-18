@@ -13,7 +13,7 @@
 * ~~Edit Label~~
 * Fix tagging bug when appending images
 * Show/Hide face-boxes toggle
-* Deploy to netlify
+* ~~Deploy to netlify~~
 * Hover over image item styling
 * ~~Set color to selected image item~~
 * Integrate eslint with VSCode
